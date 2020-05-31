@@ -11,7 +11,7 @@ namespace JoeCoffeeStore.StockManagement.App.Services
     public class CoffeeDataService: ICoffeeDataService
     {
         ICoffeeRepository repository = new CoffeeRepository();
-        public CoffeeDataService()
+        public CoffeeDataService(ICoffeeRepository repository)
         {
             this.repository = repository;
         }

@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace JoeCoffeeStore.StockManagement.App.Services
 {
-    public class DialogService
+    public class DialogService : IDialogService
     {
 
         Window coffeeDetailView = null;

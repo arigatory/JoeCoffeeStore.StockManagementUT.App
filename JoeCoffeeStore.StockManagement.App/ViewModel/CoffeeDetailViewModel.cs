@@ -15,7 +15,7 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
     public class CoffeeDetailViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private CoffeeDataService coffeeDataService;
+        private ICoffeeDataService coffeeDataService;
 
 
         private void RaisePropertyChanged(string propertyName)
@@ -41,14 +41,14 @@ namespace JoeCoffeeStore.StockManagement.App.ViewModel
             }
         }
 
-        public CoffeeDetailViewModel()
+        public CoffeeDetailViewModel(ICoffeeDataService coffeeDataService, IDialogService dialogService)
         {
             Messenger.Default.Register<Coffee>(this, OnCoffeeReceived);
 
             SaveCommand = new CustomCommand(SaveCoffee, CanSaveCoffee);
             DeleteCommand = new CustomCommand(DeleteCoffee, CanDeleteCoffee);
 
-            coffeeDataService = new CoffeeDataService();
+            this.coffeeDataService = coffeeDataService;
         }
 
         public void OnCoffeeReceived(Coffee coffee)
